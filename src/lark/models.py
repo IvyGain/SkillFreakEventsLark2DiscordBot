@@ -21,6 +21,10 @@ class LarkEventRecord(BaseModel):
     seminar_url: Optional[str] = None
     thumbnail_url: Optional[str] = None
     status: Optional[str] = None
+    location: Optional[str] = None
+    participants: Optional[str] = None
+    created_time: Optional[str] = None
+    modified_time: Optional[str] = None
     
     # 追加フィールド
     event_start_datetime: Optional[datetime] = None
@@ -189,6 +193,54 @@ class LarkEventRecord(BaseModel):
             
         except ValueError:
             return None, None
+    
+    def get_formatted_date(self) -> str:
+        """フォーマットされた日付文字列を取得"""
+        if not self.event_date:
+            return "日付未設定"
+        
+        try:
+            # 日付文字列をパース
+            event_date_obj = datetime.strptime(self.event_date, "%Y-%m-%d").date()
+            # 日本語形式でフォーマット
+            return event_date_obj.strftime("%Y年%m月%d日")
+        except ValueError:
+            return self.event_date  # パースできない場合は元の文字列を返す
+    
+    def get_iso_date_string(self) -> str:
+        """ISO形式の日付文字列を取得（YYYY-MM-DD）"""
+        if not self.event_date:
+            return "日付未設定"
+        
+        try:
+            # 日付文字列をパース
+            event_date_obj = datetime.strptime(self.event_date, "%Y-%m-%d").date()
+            # ISO形式でフォーマット
+            return event_date_obj.strftime("%Y-%m-%d")
+        except ValueError:
+            return self.event_date  # パースできない場合は元の文字列を返す
+    
+    def get_formatted_time(self) -> str:
+        """フォーマットされた時間文字列を取得"""
+        if self.start_time and self.end_time:
+            return f"{self.start_time} - {self.end_time}"
+        elif self.start_time:
+            return f"{self.start_time} -"
+        elif self.end_time:
+            return f"- {self.end_time}"
+        else:
+            return "時間未設定"
+    
+    def get_status_emoji(self) -> str:
+        """ステータスに応じた絵文字を返す"""
+        status_emoji_map = {
+            '開催予定': '🔵',
+            '開催中': '🟡',
+            '終了': '🟢',
+            '中止': '🔴',
+            '延期': '⚪'
+        }
+        return status_emoji_map.get(self.status, '⚫')
 
 
 class LarkTableResponse(BaseModel):
@@ -248,7 +300,11 @@ DEFAULT_FIELD_MAPPING = {
     'speakers': '講師',
     'seminar_url': 'セミナーURL',
     'thumbnail_url': 'サムネイル',
-    'status': 'ステータス'
+    'status': 'ステータス',
+    'location': '場所',
+    'participants': '参加者',
+    'created_time': '作成日時',
+    'modified_time': '更新日時'
 }
 
 

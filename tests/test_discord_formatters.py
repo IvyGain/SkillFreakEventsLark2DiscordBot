@@ -53,7 +53,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "📅 本日のイベント" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['primary']
+        assert embed.color.value == DiscordFormatter.COLORS['primary']
         assert len(embed.fields) == 3  # 3つのイベント
         
         # 最初のイベントの内容をチェック
@@ -68,7 +68,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "📅 本日のイベント" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['info']
+        assert embed.color.value == DiscordFormatter.COLORS['info']
         assert "本日はイベントがありません" in embed.description
     
     def test_create_archive_embed(self, sample_event):
@@ -77,7 +77,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert sample_event.event_name in embed.title
-        assert embed.color == DiscordFormatter.COLORS['archive']
+        assert embed.color.value == DiscordFormatter.COLORS['archive']
         
         # フィールドの確認
         field_names = [field.name for field in embed.fields]
@@ -94,7 +94,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "❌ エラー" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['error']
+        assert embed.color.value == DiscordFormatter.COLORS['error']
         assert error_message in embed.description
     
     def test_create_success_embed(self):
@@ -104,7 +104,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "✅ 成功" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['success']
+        assert embed.color.value == DiscordFormatter.COLORS['success']
         assert success_message in embed.description
     
     def test_create_info_embed(self):
@@ -114,7 +114,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "ℹ️ 情報" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['info']
+        assert embed.color.value == DiscordFormatter.COLORS['info']
         assert info_message in embed.description
     
     def test_create_archive_summary_embed(self, multiple_events):
@@ -123,7 +123,7 @@ class TestDiscordFormatter:
         
         assert isinstance(embed, discord.Embed)
         assert "📚 アーカイブサマリー" in embed.title
-        assert embed.color == DiscordFormatter.COLORS['archive']
+        assert embed.color.value == DiscordFormatter.COLORS['archive']
         assert "3件のイベント" in embed.description
         
         # イベントリストの確認
@@ -263,4 +263,13 @@ class TestDiscordFormatter:
         
         # 特殊文字が適切に処理されることを確認
         assert "🎉" in embed.title
-        assert "@#$%^&*" in embed.fields[-2].value  # 説明フィールド
+        
+        # 説明フィールドを見つける
+        description_field = None
+        for field in embed.fields:
+            if "📝 説明" in field.name:
+                description_field = field
+                break
+        
+        assert description_field is not None
+        assert "@#$%^&*" in description_field.value  # 説明フィールド

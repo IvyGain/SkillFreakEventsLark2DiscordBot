@@ -18,7 +18,9 @@ class DiscordFormatter:
         'success': 0x2ecc71,     # 緑
         'warning': 0xf39c12,     # オレンジ
         'danger': 0xe74c3c,      # 赤
+        'error': 0xe74c3c,       # 赤（エラー用）
         'info': 0x9b59b6,        # 紫
+        'archive': 0x34495e,     # ダークグレー（アーカイブ用）
         'secondary': 0x95a5a6    # グレー
     }
     
@@ -36,8 +38,8 @@ class DiscordFormatter:
         """本日のイベント告知用Embedを作成"""
         if not events:
             embed = discord.Embed(
-                title="📅 本日のイベント情報",
-                description="本日開催予定のイベントはありません。",
+                title="📅 本日のイベント",
+                description="本日はイベントがありません",
                 color=cls.COLORS['info'],
                 timestamp=datetime.now()
             )
@@ -45,7 +47,7 @@ class DiscordFormatter:
             return embed
         
         embed = discord.Embed(
-            title="🎉 本日のイベント情報",
+            title="📅 本日のイベント",
             description=f"本日は **{len(events)}件** のイベントが開催予定です！",
             color=cls.COLORS['primary'],
             timestamp=datetime.now()
@@ -97,7 +99,7 @@ class DiscordFormatter:
                 field_value += f"\n📝 **説明**: {description}"
             
             embed.add_field(
-                name=f"イベント {i}",
+                name=f"📅 {event_title}",
                 value=field_value,
                 inline=False
             )
@@ -110,12 +112,17 @@ class DiscordFormatter:
         return embed
     
     @classmethod
+    def create_archive_embed(cls, event: LarkEventRecord) -> discord.Embed:
+        """アーカイブ用Embedを作成（テスト用エイリアス）"""
+        return cls.create_event_archive_embed(event)
+    
+    @classmethod
     def create_event_archive_embed(cls, event: LarkEventRecord) -> discord.Embed:
         """イベントアーカイブ用Embedを作成"""
         event_title = event.get_title()
         
-        # ステータスに応じたカラー
-        color = cls.STATUS_COLORS.get(event.status, cls.COLORS['secondary'])
+        # アーカイブカラーを使用
+        color = cls.COLORS['archive']
         
         embed = discord.Embed(
             title=f"📋 {event_title}",
@@ -151,19 +158,44 @@ class DiscordFormatter:
         if event.seminar_url:
             basic_info += f"\n🔗 **セミナーURL**: [録画・資料はこちら]({event.seminar_url})"
         
+        # 開催日時フィールド
         embed.add_field(
-            name="基本情報",
-            value=basic_info,
+            name="📅 開催日時",
+            value=f"{date_str} {time_str}",
             inline=False
+        )
+        
+        # 参加者フィールド
+        embed.add_field(
+            name="👥 参加者",
+            value=f"{event.participants or '未定'}名",
+            inline=True
+        )
+        
+        # 場所フィールド
+        embed.add_field(
+            name="📍 場所",
+            value=event.location or '場所未設定',
+            inline=True
         )
         
         # 詳細説明
         if event.description:
+            description = event.description
+            if len(description) > 500:
+                description = description[:497] + "..."
             embed.add_field(
-                name="詳細",
-                value=event.description,
+                name="📝 説明",
+                value=description,
                 inline=False
             )
+        
+        # ステータスフィールド
+        embed.add_field(
+            name="📊 ステータス",
+            value=f"{event.get_status_emoji()} {event.status or '未設定'}",
+            inline=True
+        )
         
         # メタ情報
         if event.created_time or event.modified_time:
@@ -223,8 +255,51 @@ class DiscordFormatter:
         return embed
     
     @classmethod
-    def create_archive_summary_embed(cls, archived_count: int, date: str) -> discord.Embed:
-        """アーカイブ完了サマリー用Embedを作成"""
+    def create_archive_summary_embed(cls, events: List[LarkEventRecord]) -> discord.Embed:
+        """アーカイブサマリー用Embedを作成（複数イベント対応）"""
+        if not events:
+            embed = discord.Embed(
+                title="📚 アーカイブサマリー",
+                description="アーカイブするイベントがありません。",
+                color=cls.COLORS['info'],
+                timestamp=datetime.now()
+            )
+            embed.set_footer(text="Lark Events Bot")
+            return embed
+        
+        embed = discord.Embed(
+            title="📚 アーカイブサマリー",
+            description=f"{len(events)}件のイベント",
+            color=cls.COLORS['archive'],
+            timestamp=datetime.now()
+        )
+        
+        # 各イベントの詳細を追加（最大10件まで）
+        for i, event in enumerate(events[:10]):
+            event_name = event.event_name or "イベント名未設定"
+            formatted_date = event.get_formatted_date()
+            formatted_time = event.get_formatted_time()
+            
+            embed.add_field(
+                name=f"{i+1}. {event_name}",
+                value=f"📅 {formatted_date}\n⏰ {formatted_time}",
+                inline=True
+            )
+        
+        # 10件を超える場合は省略表示
+        if len(events) > 10:
+            embed.add_field(
+                name="...",
+                value=f"他 {len(events) - 10}件のイベント",
+                inline=True
+            )
+        
+        embed.set_footer(text="Lark Events Bot")
+        return embed
+    
+    @classmethod
+    def create_archive_summary_embed_by_count(cls, archived_count: int, date: str) -> discord.Embed:
+        """アーカイブ完了サマリー用Embedを作成（件数指定版）"""
         if archived_count == 0:
             description = f"{date} のアーカイブ対象イベントはありませんでした。"
             color = cls.COLORS['info']
@@ -245,7 +320,7 @@ class DiscordFormatter:
     def format_thread_name(cls, event: LarkEventRecord) -> str:
         """フォーラムスレッド名をフォーマット"""
         event_name = event.event_name or "イベント"
-        date_str = event.get_formatted_date() if event.event_date else "日付未設定"
+        date_str = event.get_iso_date_string() if event.event_date else "日付未設定"
         
         # スレッド名の長さ制限（Discordの制限: 100文字）
         thread_name = f"{event_name} - {date_str}"
@@ -268,6 +343,28 @@ class DiscordFormatter:
             event_name = event.event_name or "イベント名未設定"
             time_info = event.get_formatted_time()
             summary += f"{i}. {event_name} ({time_info})\n"
+        
+        return summary.strip()
+    
+    @classmethod
+    def format_notification_summary(cls, events: List[LarkEventRecord]) -> str:
+        """通知サマリーフォーマット（テスト用エイリアス）"""
+        if not events:
+            return "本日はイベントがありません。"
+        
+        summary = f"本日は{len(events)}件のイベントがあります:\n"
+        
+        # 最大10件まで表示
+        display_events = events[:10]
+        for i, event in enumerate(display_events, 1):
+            event_name = event.event_name or "イベント名未設定"
+            time_info = event.get_formatted_time()
+            summary += f"{i}. {event_name} ({time_info})\n"
+        
+        # 10件を超える場合は省略表示
+        if len(events) > 10:
+            remaining = len(events) - 10
+            summary += f"他に{remaining}件のイベント\n"
         
         return summary.strip()
 
