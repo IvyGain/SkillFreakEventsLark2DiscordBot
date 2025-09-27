@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Lark to Discord Events Bot Webhook Server for Railway
+Updated: 2025-09-27 - Fixed Flask request handling
 """
 
 import os
