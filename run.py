@@ -21,7 +21,19 @@ app = Flask(__name__)
 def webhook():
     """Lark webhook endpoint"""
     try:
-        result = handler_sync(request)
+        # Flaskリクエストから必要なデータを抽出
+        class MockRequest:
+            def __init__(self, json_data):
+                self.body = json_data
+        
+        # JSONデータを取得
+        json_data = request.get_json()
+        if not json_data:
+            return jsonify({"error": "No JSON data provided"}), 400
+        
+        # MockRequestオブジェクトを作成してhandler_syncに渡す
+        mock_request = MockRequest(json_data)
+        result = handler_sync(mock_request)
         return jsonify(result)
     except Exception as e:
         print(f"Webhook error: {e}")
