@@ -1,0 +1,149 @@
+{
+  "record_id": "recuUvrZK2UMYj",
+  "fields": {
+    "StreamYard": {
+      "link": "https://www.youtube.com/live/MqOX3VXKEx4?si=s7HAVsIO4P2HtilB",
+      "text": "https://www.youtube.com/live/MqOX3VXKEx4?si=s7HAVsIO4P2HtilB"
+    },
+    "アンケート": [
+      {
+        "table_id": "tblGbi1t03h3h0g7",
+        "text_arr": [],
+        "type": "text"
+      }
+    ],
+    "アンケートリンク": [
+      {
+        "link": "https://ivygain-project.jp.larksuite.com/share/base/form/shrjpjzsB5tHfFFtcIkTDlKFv4b?prefill_イベント=GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー",
+        "text": "アンケートリンク",
+        "type": "url"
+      }
+    ],
+    "イベント": [
+      {
+        "text": "✅｜GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー",
+        "type": "text"
+      }
+    ],
+    "イベントPDF": [
+      {
+        "file_token": "MLS6b7jcmoDanexyhiAjjfctpYf",
+        "name": "GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー.pdf",
+        "size": 9013718,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=MLS6b7jcmoDanexyhiAjjfctpYf&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/MLS6b7jcmoDanexyhiAjjfctpYf/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "イベントタイトル": "GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー",
+    "イベント終了日時": 1737518400000,
+    "イベント開始日(関数)": [
+      {
+        "text": "1/22(水)12:00",
+        "type": "text"
+      }
+    ],
+    "イベント開始日時": 1737514800000,
+    "グラフ用今月の参加者累計": 189,
+    "グループ": [
+      {
+        "avatar_url": "https://s16-imfile-sg.feishucdn.com/static-resource/v1/default-avatar_0cda3662-875a-4354-94d2-83e7393c7123~?image_size=100x100&cut_type=&quality=&format=jpeg&sticker_format=.webp",
+        "id": "oc_e83a26a0a6c539fdb11a67d5be6cf24f",
+        "name": "🎪｜1/22(水)12:00【GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活..."
+      }
+    ],
+    "コミュニティ招待": true,
+    "サムネイル": [
+      {
+        "file_token": "LDwWbXLDso2BvYx11BZjjK7BpRb",
+        "name": "GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー.png",
+        "size": 481419,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=LDwWbXLDso2BvYx11BZjjK7BpRb&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "image/png",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/LDwWbXLDso2BvYx11BZjjK7BpRb/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "セミナーURL": {
+      "link": "https://www.youtube.com/live/MqOX3VXKEx4?si=s7HAVsIO4P2HtilB",
+      "text": "https://www.youtube.com/live/MqOX3VXKEx4?si=s7HAVsIO4P2HtilB"
+    },
+    "チケット売上合計": "10980",
+    "プレビューPeatix": {
+      "link": "https://googlecalendar-notioncalendar0122.peatix.com/view",
+      "text": "https://googlecalendar-notioncalendar0122.peatix.com/view"
+    },
+    "利益": 0,
+    "報酬振込予定額": 4868.5,
+    "売上合計振込金額": "9737",
+    "本番Peatixページ": {
+      "link": "https://googlecalendar-notioncalendar0122.peatix.com/view",
+      "text": "https://googlecalendar-notioncalendar0122.peatix.com/view"
+    },
+    "来場者数": "70",
+    "特典配布": true,
+    "登壇者": [
+      {
+        "record_ids": [
+          "recuKuc6dZ0THa",
+          "recuKuhMkg1BYO"
+        ],
+        "table_id": "tbln5lgk6RUsljFJ",
+        "text": "けいたろう,モーリー",
+        "text_arr": [
+          "けいたろう",
+          "モーリー"
+        ],
+        "type": "text"
+      }
+    ],
+    "登壇者(セレクト)": [
+      "モーリー"
+    ],
+    "登壇者Larkアカウント": {
+      "users": [
+        {
+          "enName": "Nkeitarou",
+          "id": "ou_08a31e78663b308ab0e7b94cd9a9d329",
+          "name": "Nkeitarou",
+          "notify": false,
+          "userId": "7241197951735824417"
+        },
+        {
+          "email": "info@ivygain.co.jp",
+          "enName": "モーリー",
+          "id": "ou_03cc9591a03c1e77b8d7582c956cf058",
+          "name": "モーリー",
+          "notify": false,
+          "userId": "7242916566742859809"
+        }
+      ]
+    },
+    "精算振込日": 1745766000000,
+    "講師SF招待": true,
+    "講師登壇報酬振込金額": "9737",
+    "販売明細": [
+      {
+        "file_token": "AmQ5b8u0BoKpQDx6Wj2j6y3Spof",
+        "name": "「GoogleカレンダーとNotionカレンダーを使いこなす！効率的なスケジュール管理と連携活用セミナー」の販売明細 (発行日_ 2025年8月21日).pdf",
+        "size": 366522,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=AmQ5b8u0BoKpQDx6Wj2j6y3Spof&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/AmQ5b8u0BoKpQDx6Wj2j6y3Spof/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "購入者情報リンク生成": [
+      {
+        "link": "https://googlecalendar-notioncalendar0122.peatix.com/view/get_view_data",
+        "text": "参加者情報",
+        "type": "url"
+      }
+    ],
+    "開催月": [
+      {
+        "text": "2025-01",
+        "type": "text"
+      }
+    ],
+    "５日前告知": 45674.5
+  }
+}

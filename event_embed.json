@@ -1,0 +1,45 @@
+{
+  "title": "🎉 新しいイベントのお知らせ",
+  "description": "実践的Manus入門 ~ 講師keitaroが教える基礎の全て ~",
+  "color": 65280,
+  "fields": [
+    {
+      "name": "📅 日時",
+      "value": "2024-02-15 19:00:00 - 2024-02-15 21:00:00",
+      "inline": false
+    },
+    {
+      "name": "🏢 会場",
+      "value": "オンライン（Zoom）",
+      "inline": true
+    },
+    {
+      "name": "💰 料金",
+      "value": "無料",
+      "inline": true
+    },
+    {
+      "name": "👥 定員",
+      "value": "50名",
+      "inline": true
+    },
+    {
+      "name": "🎫 申込",
+      "value": "https://skillfreak-manus-intro.peatix.com/",
+      "inline": false
+    },
+    {
+      "name": "📝 イベント概要",
+      "value": "VR/AR開発の最前線で活躍するManus技術について、基礎から実践まで幅広く学べるイベントです。\n\n【内容】\n・Manus技術の基礎概念\n・実際の開発事例紹介\n・ハンズオン体験\n・Q&Aセッション\n\n【対象者】\n・VR/AR開発に興味がある方\n・Manus技術を学びたい方\n・実践的なスキルを身につけたい方\n\n【講師】\nkeitaro - Manus技術のエキスパート、多数の開発実績を持つ",
+      "inline": false
+    },
+    {
+      "name": "��️ タグ",
+      "value": "#VR #AR #Manus #ハンズオン #初心者歓迎",
+      "inline": false
+    }
+  ],
+  "footer": {
+    "text": "SkillFreak Events Bot"
+  }
+}

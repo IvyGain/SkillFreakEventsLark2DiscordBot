@@ -1,0 +1,17 @@
+{
+  "event_id": 1421340723353092157,
+  "event_name": "AIxNotionで実現する次世代の情報活用",
+  "event_url": "https://discord.com/events/1189478304424656906/1421340723353092157",
+  "guild_id": 1189478304424656906,
+  "guild_name": "SkillFreak",
+  "start_time": "2025-10-04T03:40:29.874079+00:00",
+  "end_time": "2025-10-04T05:40:29.874079+00:00",
+  "location": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z",
+  "description": "🎯 **AIxNotionで実現する次世代の情報活用**\n\n👨‍🏫 **講師:** モーリー\n\n📅 **開催日時:**\n開始: 2025年10月04日 03:40 UTC\n終了: 2025年10月04日 05:40 UTC\n\n🔗 **配信リンク:**\nhttps://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z\n\n📝 **イベント詳細:**\nLarkから取得した実際のイベントデータを使用して作成されました。\n\n🆔 **Record ID:** recuUvzFUUy6V7\n",
+  "created_at": "2025-09-27T03:40:33.788863+00:00",
+  "source_record_id": "recuUvzFUUy6V7",
+  "source": "real_lark_data",
+  "instructor": "モーリー",
+  "streamyard_link": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z",
+  "note": "Real Lark data used for event creation with timezone awareness"
+}

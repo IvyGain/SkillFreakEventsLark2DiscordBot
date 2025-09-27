@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/webhook.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/webhook",
+      "dest": "/api/webhook.py"
+    },
+    {
+      "src": "/webhook/lark/event",
+      "dest": "/api/webhook.py"
+    }
+  ],
+  "env": {
+    "DISCORD_BOT_TOKEN": "@discord_bot_token",
+    "DISCORD_GUILD_ID": "@discord_guild_id",
+    "DISCORD_NOTIFICATION_CHANNEL_ID": "@discord_notification_channel_id",
+    "LARK_APP_ID": "@lark_app_id",
+    "LARK_APP_SECRET": "@lark_app_secret",
+    "LARK_TABLE_ID": "@lark_table_id"
+  },
+  "functions": {
+    "api/webhook.py": {
+      "maxDuration": 30
+    }
+  }
+}

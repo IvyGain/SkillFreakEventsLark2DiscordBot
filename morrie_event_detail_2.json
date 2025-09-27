@@ -1,0 +1,137 @@
+{
+  "record_id": "recuUvynZqzkB5",
+  "fields": {
+    "StreamYard": {
+      "link": "https://www.youtube.com/live/u_lpMz8mCrA?si=QwE1iB22_VRbYOSH",
+      "text": "https://www.youtube.com/live/u_lpMz8mCrA?si=QwE1iB22_VRbYOSH"
+    },
+    "アンケート": [
+      {
+        "table_id": "tblGbi1t03h3h0g7",
+        "text_arr": [],
+        "type": "text"
+      }
+    ],
+    "アンケートリンク": [
+      {
+        "link": "https://ivygain-project.jp.larksuite.com/share/base/form/shrjpjzsB5tHfFFtcIkTDlKFv4b?prefill_イベント=iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-",
+        "text": "アンケートリンク",
+        "type": "url"
+      }
+    ],
+    "イベント": [
+      {
+        "text": "✅｜iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-",
+        "type": "text"
+      }
+    ],
+    "イベントPDF": [
+      {
+        "file_token": "G4qqbEhnzokhKJxlclyjkyqipBf",
+        "name": "iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-.pdf",
+        "size": 19387491,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=G4qqbEhnzokhKJxlclyjkyqipBf&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/G4qqbEhnzokhKJxlclyjkyqipBf/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "イベントタイトル": "iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-",
+    "イベント終了日時": 1736481600000,
+    "イベント開始日(関数)": [
+      {
+        "text": "1/10(金)12:00",
+        "type": "text"
+      }
+    ],
+    "イベント開始日時": 1736478000000,
+    "グラフ用今月の参加者累計": 119,
+    "グループ": [
+      {
+        "avatar_url": "https://s16-imfile-sg.feishucdn.com/static-resource/v1/default-avatar_44ae0ca3-e140-494b-956f-78091e348435~?image_size=100x100&cut_type=&quality=&format=jpeg&sticker_format=.webp",
+        "id": "oc_3cf0c8bf97e800325f792372061af165",
+        "name": "🎪｜1/10(金)12:00【iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-】"
+      }
+    ],
+    "コミュニティ招待": true,
+    "サムネイル": [
+      {
+        "file_token": "BaQxbmRs0op6FbxICIhjKtuJple",
+        "name": "ぶんかいさんiOSショートカット講座920x450.png",
+        "size": 473306,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=BaQxbmRs0op6FbxICIhjKtuJple&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "image/png",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/BaQxbmRs0op6FbxICIhjKtuJple/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "セミナーURL": {
+      "link": "https://www.youtube.com/live/u_lpMz8mCrA?si=QwE1iB22_VRbYOSH",
+      "text": "https://www.youtube.com/live/u_lpMz8mCrA?si=QwE1iB22_VRbYOSH"
+    },
+    "チケット売上合計": "31920",
+    "プレビューPeatix": {
+      "link": "https://bunkai-ios-shortcut25110.peatix.com/view",
+      "text": "https://bunkai-ios-shortcut25110.peatix.com/view"
+    },
+    "利益": 29453,
+    "報酬振込予定額": 14726.5,
+    "売上合計振込金額": "29453",
+    "本番Peatixページ": {
+      "link": "https://bunkai-ios-shortcut25110.peatix.com/view",
+      "text": "https://bunkai-ios-shortcut25110.peatix.com/view"
+    },
+    "来場者数": "119",
+    "特典配布": true,
+    "登壇者": [
+      {
+        "record_ids": [
+          "recuKuhMkg1BYO"
+        ],
+        "table_id": "tbln5lgk6RUsljFJ",
+        "text": "モーリー",
+        "text_arr": [
+          "モーリー"
+        ],
+        "type": "text"
+      }
+    ],
+    "登壇者Larkアカウント": {
+      "users": [
+        {
+          "email": "info@ivygain.co.jp",
+          "enName": "モーリー",
+          "id": "ou_03cc9591a03c1e77b8d7582c956cf058",
+          "name": "モーリー",
+          "notify": false,
+          "userId": "7242916566742859809"
+        }
+      ]
+    },
+    "精算振込日": 1757948400000,
+    "講師SF招待": true,
+    "講師登壇報酬振込金額": "0",
+    "販売明細": [
+      {
+        "file_token": "N2AlbajJwofvOrxBL4ujU0xGplg",
+        "name": "「iOSショートカット講座 -あなたのiPhoneを最強のアシスタントに-」の販売明細 (発行日_ 2025年8月21日).pdf",
+        "size": 341004,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=N2AlbajJwofvOrxBL4ujU0xGplg&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/N2AlbajJwofvOrxBL4ujU0xGplg/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "購入者情報リンク生成": [
+      {
+        "link": "https://bunkai-ios-shortcut25110.peatix.com/view/get_view_data",
+        "text": "参加者情報",
+        "type": "url"
+      }
+    ],
+    "開催月": [
+      {
+        "text": "2025-01",
+        "type": "text"
+      }
+    ],
+    "５日前告知": 45662.5
+  }
+}

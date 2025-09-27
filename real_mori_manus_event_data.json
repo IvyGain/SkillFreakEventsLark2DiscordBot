@@ -1,0 +1,148 @@
+{
+  "record_id": "recuUvzFUUy6V7",
+  "fields": {
+    "StreamYard": {
+      "link": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z",
+      "text": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z"
+    },
+    "アンケート": [
+      {
+        "table_id": "tblGbi1t03h3h0g7",
+        "text_arr": [],
+        "type": "text"
+      }
+    ],
+    "アンケートリンク": [
+      {
+        "link": "https://ivygain-project.jp.larksuite.com/share/base/form/shrjpjzsB5tHfFFtcIkTDlKFv4b?prefill_イベント=AIxNotionで実現する次世代の情報活用",
+        "text": "アンケートリンク",
+        "type": "url"
+      }
+    ],
+    "イベント": [
+      {
+        "text": "✅｜AIxNotionで実現する次世代の情報活用",
+        "type": "text"
+      }
+    ],
+    "イベントPDF": [
+      {
+        "file_token": "KjAbbU8gjozMk4xzmZqjnRMvpLg",
+        "name": "AIxNotionで実現する次世代の情報活用.pdf",
+        "size": 7447994,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=KjAbbU8gjozMk4xzmZqjnRMvpLg&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/KjAbbU8gjozMk4xzmZqjnRMvpLg/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "イベントタイトル": "AIxNotionで実現する次世代の情報活用",
+    "イベント終了日時": 1734836400000,
+    "イベント開始日(関数)": [
+      {
+        "text": "12/22(日)10:00",
+        "type": "text"
+      }
+    ],
+    "イベント開始日時": 1734829200000,
+    "グラフ用今月の参加者累計": 37,
+    "グループ": [
+      {
+        "avatar_url": "https://s16-imfile-sg.feishucdn.com/static-resource/v1/default-avatar_9fb72564-d52a-49b0-9de8-f79071a02286~?image_size=100x100&cut_type=&quality=&format=jpeg&sticker_format=.webp",
+        "id": "oc_2c9f229bb4afd6bb4ffc350d7a986651",
+        "name": "🎪｜12/22(日)10:00【AIxNotionで実現する次世代の情報活用】"
+      }
+    ],
+    "コミュニティ招待": true,
+    "サムネイル": [
+      {
+        "file_token": "DELjb7iwYodCr3xvOVojObMWpMc",
+        "name": "AIxNotionで実現する次世代の情報活用_920x450.png",
+        "size": 559933,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=DELjb7iwYodCr3xvOVojObMWpMc&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "image/png",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/DELjb7iwYodCr3xvOVojObMWpMc/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "セミナーURL": {
+      "link": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z",
+      "text": "https://www.youtube.com/live/BZLiT_uPl8E?si=R5gMhaQuJNgWV34Z"
+    },
+    "チケット売上合計": "123260",
+    "プレビューPeatix": {
+      "link": "https://aixnotion-241222.peatix.com",
+      "text": "https://aixnotion-241222.peatix.com"
+    },
+    "利益": -9913,
+    "報酬振込予定額": 56673.5,
+    "売上合計振込金額": "113347",
+    "本番Peatixページ": {
+      "link": "https://aixnotion-241222.peatix.com",
+      "text": "https://aixnotion-241222.peatix.com"
+    },
+    "来場者数": "37",
+    "特典配布": true,
+    "登壇者": [
+      {
+        "record_ids": [
+          "recuKuhMkg1BYO"
+        ],
+        "table_id": "tbln5lgk6RUsljFJ",
+        "text": "モーリー",
+        "text_arr": [
+          "モーリー"
+        ],
+        "type": "text"
+      }
+    ],
+    "登壇者(セレクト)": [
+      "モーリー"
+    ],
+    "登壇者Larkアカウント": {
+      "users": [
+        {
+          "email": "info@ivygain.co.jp",
+          "enName": "モーリー",
+          "id": "ou_03cc9591a03c1e77b8d7582c956cf058",
+          "name": "モーリー",
+          "notify": false,
+          "userId": "7242916566742859809"
+        }
+      ]
+    },
+    "精算振込日": 1736348400000,
+    "講師SF招待": true,
+    "講師登壇報酬振込金額": "123260",
+    "販売明細": [
+      {
+        "file_token": "WKojbFk3BoJdSJxrxHOjvWFmpeb",
+        "name": "「AIxNotionで実現する次世代の情報活用」の販売明細 (発行日_ 2025年8月21日).pdf",
+        "size": 293405,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=WKojbFk3BoJdSJxrxHOjvWFmpeb&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "application/pdf",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/WKojbFk3BoJdSJxrxHOjvWFmpeb/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "購入者情報リンク生成": [
+      {
+        "link": "https://aixnotion-241222.peatix.com/get_view_data",
+        "text": "参加者情報",
+        "type": "url"
+      }
+    ],
+    "開催月": [
+      {
+        "text": "2024-12",
+        "type": "text"
+      }
+    ],
+    "５日前告知": 45643.4166666667
+  },
+  "retrieved_at": "2025-09-27T12:37:39.223431",
+  "source": "real_lark_table",
+  "table_id": "tblnPssJqIBXNi6a",
+  "search_criteria": {
+    "date": "2024-10-03",
+    "instructor": "モーリー",
+    "topic": "Manus"
+  }
+}

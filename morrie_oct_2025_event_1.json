@@ -1,0 +1,143 @@
+{
+  "record_id": "recxIJ2WmL",
+  "title": "Manusで実現する業務自動化術〜他ツール連携実践ガイド〜",
+  "opening_month": [
+    {
+      "text": "2025-10",
+      "type": "text"
+    }
+  ],
+  "instructor": [
+    {
+      "record_ids": [
+        "recuKuhMkg1BYO"
+      ],
+      "table_id": "tbln5lgk6RUsljFJ",
+      "text": "モーリー",
+      "text_arr": [
+        "モーリー"
+      ],
+      "type": "text"
+    }
+  ],
+  "fields": {
+    "Peatix確認": [
+      {
+        "email": "info@ivygain.co.jp",
+        "en_name": "モーリー",
+        "id": "ou_03cc9591a03c1e77b8d7582c956cf058",
+        "name": "モーリー"
+      }
+    ],
+    "StreamYard": {
+      "link": "https://streamyard.com/zbsm6bmguf",
+      "text": "https://streamyard.com/zbsm6bmguf"
+    },
+    "アンケート": [
+      {
+        "table_id": "tblGbi1t03h3h0g7",
+        "text_arr": [],
+        "type": "text"
+      }
+    ],
+    "アンケートリンク": [
+      {
+        "link": "https://ivygain-project.jp.larksuite.com/share/base/form/shrjpjzsB5tHfFFtcIkTDlKFv4b?prefill_イベント=Manusで実現する業務自動化術〜他ツール連携実践ガイド〜",
+        "text": "アンケートリンク",
+        "type": "url"
+      }
+    ],
+    "イベント": [
+      {
+        "text": "✍｜Manusで実現する業務自動化術〜他ツール連携実践ガイド〜",
+        "type": "text"
+      }
+    ],
+    "イベントタイトル": "Manusで実現する業務自動化術〜他ツール連携実践ガイド〜",
+    "イベント終了日時": 1759498200000,
+    "イベント開始日(関数)": [
+      {
+        "text": "10/3(金)21:30",
+        "type": "text"
+      }
+    ],
+    "イベント開始日時": 1759494600000,
+    "グラフ用今月の参加者累計": 0,
+    "グループ": [
+      {
+        "avatar_url": "https://s16-imfile-sg.feishucdn.com/static-resource/v1/default-avatar_24fc117c-9654-4aab-9e48-0ada1d20f0b6~?image_size=100x100&cut_type=&quality=&format=jpeg&sticker_format=.webp",
+        "id": "oc_330597ee97cd94e2b0d3f8b7c0787358",
+        "name": "🎪｜10/3(金)21:30【Manusで実現する業務自動化術〜他ツール連携実践ガイド〜】"
+      }
+    ],
+    "サムネイル": [
+      {
+        "file_token": "JmPdbWLmaoCCkDx5Qdij4aVepGe",
+        "name": "manusと他ツール連携_920x450.png",
+        "size": 397760,
+        "tmp_url": "https://open.feishu.cn/open-apis/drive/v1/medias/batch_get_tmp_download_url?file_tokens=JmPdbWLmaoCCkDx5Qdij4aVepGe&extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D",
+        "type": "image/png",
+        "url": "https://open.feishu.cn/open-apis/drive/v1/medias/JmPdbWLmaoCCkDx5Qdij4aVepGe/download?extra=%7B%22bitablePerm%22%3A%7B%22tableId%22%3A%22tblnPssJqIBXNi6a%22%2C%22rev%22%3A2006%7D%7D"
+      }
+    ],
+    "セミナーURL": {
+      "link": "https://www.youtube.com/live/t1vBEvXGVO4?si=c34TcfJz-ZG_pyqy",
+      "text": "https://www.youtube.com/live/t1vBEvXGVO4?si=c34TcfJz-ZG_pyqy"
+    },
+    "プレビューPeatix": {
+      "link": "https://peatix.com/event/4586766/view?k=b8923bafa8041f075ea6ee815e2239d0a4dd4ca7",
+      "text": "https://peatix.com/event/4586766/view?k=b8923bafa8041f075ea6ee815e2239d0a4dd4ca7"
+    },
+    "利益": 0,
+    "報酬振込予定額": 0,
+    "本番Peatixページ": {
+      "link": "https://manus-renkei-1003.peatix.com",
+      "text": "https://manus-renkei-1003.peatix.com"
+    },
+    "登壇者": [
+      {
+        "record_ids": [
+          "recuKuhMkg1BYO"
+        ],
+        "table_id": "tbln5lgk6RUsljFJ",
+        "text": "モーリー",
+        "text_arr": [
+          "モーリー"
+        ],
+        "type": "text"
+      }
+    ],
+    "登壇者(セレクト)": [
+      "モーリー"
+    ],
+    "登壇者Larkアカウント": {
+      "users": [
+        {
+          "email": "info@ivygain.co.jp",
+          "enName": "モーリー",
+          "id": "ou_03cc9591a03c1e77b8d7582c956cf058",
+          "name": "モーリー",
+          "notify": false,
+          "userId": "7242916566742859809"
+        }
+      ]
+    },
+    "購入者情報リンク生成": [
+      {
+        "link": "https://manus-renkei-1003.peatix.com/get_view_data",
+        "text": "参加者情報",
+        "type": "url"
+      }
+    ],
+    "進行役(セレクト)": [
+      "まるこ"
+    ],
+    "開催月": [
+      {
+        "text": "2025-10",
+        "type": "text"
+      }
+    ],
+    "５日前告知": 45928.8958333333
+  }
+}

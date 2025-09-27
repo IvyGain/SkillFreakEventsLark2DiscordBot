@@ -1,0 +1,30 @@
+{
+  "title": "📹 イベントアーカイブ公開",
+  "description": "【アーカイブ】実践的Manus入門 ~ 講師keitaroが教える基礎の全て ~",
+  "color": 39423,
+  "fields": [
+    {
+      "name": "🎬 アーカイブURL",
+      "value": "https://www.youtube.com/watch?v=sample_manus_archive",
+      "inline": false
+    },
+    {
+      "name": "📅 開催日",
+      "value": "2024-02-15",
+      "inline": true
+    },
+    {
+      "name": "👥 参加者数",
+      "value": "45名",
+      "inline": true
+    },
+    {
+      "name": "🏷️ タグ",
+      "value": "#VR #AR #Manus #ハンズオン #初心者歓迎",
+      "inline": false
+    }
+  ],
+  "footer": {
+    "text": "SkillFreak Events Bot"
+  }
+}

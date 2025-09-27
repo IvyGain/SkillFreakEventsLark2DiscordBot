@@ -1,0 +1,27 @@
+{
+  "record_id": "rec_sample_manus_001",
+  "fields": {
+    "イベントタイトル": "実践的Manus入門 ~ 講師keitaroが教える基礎の全て ~",
+    "開始時間": "2024-02-15 19:00:00",
+    "終了時間": "2024-02-15 21:00:00",
+    "イベント概要": "VR/AR開発の最前線で活躍するManus技術について、基礎から実践まで幅広く学べるイベントです。\n\n【内容】\n・Manus技術の基礎概念\n・実際の開発事例紹介\n・ハンズオン体験\n・Q&Aセッション\n\n【対象者】\n・VR/AR開発に興味がある方\n・Manus技術を学びたい方\n・実践的なスキルを身につけたい方\n\n【講師】\nkeitaro - Manus技術のエキスパート、多数の開発実績を持つ",
+    "Peatix公開状況": "公開済み",
+    "Peatixイベント": "https://skillfreak-manus-intro.peatix.com/",
+    "Discord告知済み": false,
+    "アーカイブ済み": false,
+    "参加者数": 45,
+    "最大参加者数": 50,
+    "タグ": [
+      "VR",
+      "AR",
+      "Manus",
+      "ハンズオン",
+      "初心者歓迎"
+    ],
+    "会場": "オンライン（Zoom）",
+    "料金": "無料",
+    "主催者": "SkillFreak",
+    "アーカイブURL": "https://www.youtube.com/watch?v=sample_manus_archive",
+    "アーカイブタイトル": "【アーカイブ】実践的Manus入門 ~ 講師keitaroが教える基礎の全て ~"
+  }
+}
