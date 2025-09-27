@@ -47,6 +47,25 @@ cp .env.example .env
    - `Send Messages in Threads`
 4. サーバーにBotを招待
 
+### 5. Railway デプロイメント設定
+
+Railway でのデプロイ時は、以下の環境変数を設定してください：
+
+1. Railway ダッシュボードでプロジェクトを選択
+2. **Variables** タブを開く
+3. 以下の環境変数を追加：
+
+```
+LARK_APP_ID=your_actual_lark_app_id
+LARK_APP_SECRET=your_actual_lark_app_secret
+LARK_TABLE_ID=your_actual_lark_table_id
+DISCORD_BOT_TOKEN=your_actual_discord_bot_token
+DISCORD_GUILD_ID=your_actual_discord_guild_id
+DISCORD_NOTIFICATION_CHANNEL_ID=your_actual_notification_channel_id
+```
+
+**重要**: プレースホルダー値（`your_*_here`）は使用しないでください。実際の値を設定する必要があります。
+
 ## 使用方法
 
 ### 基本実行

@@ -26,12 +26,38 @@ def safe_int_env(env_var: str, default: int = 0) -> int:
     except (ValueError, TypeError):
         return default
 
-DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+def safe_str_env(env_var: str, default: str = None) -> str:
+    """Safely get string environment variable, handling placeholder values"""
+    value = os.getenv(env_var, default)
+    if value and ('your_' in value.lower() or '_here' in value.lower()):
+        return None
+    return value
+
+def validate_env_vars():
+    """Validate that required environment variables are properly set"""
+    missing_vars = []
+    
+    if not safe_str_env('LARK_APP_ID'):
+        missing_vars.append('LARK_APP_ID')
+    if not safe_str_env('LARK_APP_SECRET'):
+        missing_vars.append('LARK_APP_SECRET')
+    if not safe_str_env('LARK_TABLE_ID'):
+        missing_vars.append('LARK_TABLE_ID')
+    if not safe_str_env('DISCORD_BOT_TOKEN'):
+        missing_vars.append('DISCORD_BOT_TOKEN')
+    
+    return missing_vars
+
+# Load environment variables
+DISCORD_BOT_TOKEN = safe_str_env('DISCORD_BOT_TOKEN')
 DISCORD_GUILD_ID = safe_int_env('DISCORD_GUILD_ID', 0)
 DISCORD_NOTIFICATION_CHANNEL_ID = safe_int_env('DISCORD_NOTIFICATION_CHANNEL_ID', 0)
-LARK_APP_ID = os.getenv('LARK_APP_ID')
-LARK_APP_SECRET = os.getenv('LARK_APP_SECRET')
-LARK_TABLE_ID = os.getenv('LARK_TABLE_ID')
+LARK_APP_ID = safe_str_env('LARK_APP_ID')
+LARK_APP_SECRET = safe_str_env('LARK_APP_SECRET')
+LARK_TABLE_ID = safe_str_env('LARK_TABLE_ID')
+
+# Validate environment variables
+MISSING_ENV_VARS = validate_env_vars()
 
 async def get_lark_access_token():
     """Get Lark access token"""
@@ -367,6 +393,17 @@ async def handler(request):
         return {
             'statusCode': 405,
             'body': json.dumps({'error': 'Method not allowed'})
+        }
+    
+    # Check environment variables
+    if MISSING_ENV_VARS:
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                'error': 'Configuration error: Missing or invalid environment variables',
+                'missing_vars': MISSING_ENV_VARS,
+                'message': 'Please configure the required environment variables in Railway dashboard'
+            })
         }
     
     try:
