@@ -14,10 +14,21 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Environment variables
+# Environment variables with safe handling for placeholder values
+def safe_int_env(env_var: str, default: int = 0) -> int:
+    """Safely convert environment variable to int, handling placeholder values"""
+    value = os.getenv(env_var, str(default))
+    try:
+        # Skip conversion if it's a placeholder value
+        if 'your_' in value.lower() or '_here' in value.lower():
+            return default
+        return int(value)
+    except (ValueError, TypeError):
+        return default
+
 DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
-DISCORD_GUILD_ID = int(os.getenv('DISCORD_GUILD_ID', '0'))
-DISCORD_NOTIFICATION_CHANNEL_ID = int(os.getenv('DISCORD_NOTIFICATION_CHANNEL_ID', '0'))
+DISCORD_GUILD_ID = safe_int_env('DISCORD_GUILD_ID', 0)
+DISCORD_NOTIFICATION_CHANNEL_ID = safe_int_env('DISCORD_NOTIFICATION_CHANNEL_ID', 0)
 LARK_APP_ID = os.getenv('LARK_APP_ID')
 LARK_APP_SECRET = os.getenv('LARK_APP_SECRET')
 LARK_TABLE_ID = os.getenv('LARK_TABLE_ID')
