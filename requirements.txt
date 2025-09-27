@@ -8,6 +8,7 @@ requests==2.31.0
 # Web Framework for Webhooks
 fastapi==0.104.1
 uvicorn==0.24.0
+flask==3.0.0
 
 # Task Scheduling
 APScheduler==3.10.4
