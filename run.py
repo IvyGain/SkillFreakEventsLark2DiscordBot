@@ -21,22 +21,33 @@ app = Flask(__name__)
 def webhook():
     """Lark webhook endpoint"""
     try:
+        import json
+        
         # Flaskリクエストから必要なデータを抽出
         class MockRequest:
-            def __init__(self, json_data):
-                self.body = json_data
+            def __init__(self, json_string):
+                self.body = json_string
+                self.method = 'POST'
         
         # JSONデータを取得
         json_data = request.get_json()
         if not json_data:
             return jsonify({"error": "No JSON data provided"}), 400
         
-        # MockRequestオブジェクトを作成してhandler_syncに渡す
-        mock_request = MockRequest(json_data)
+        # JSONデータを文字列に変換してMockRequestオブジェクトを作成
+        json_string = json.dumps(json_data)
+        mock_request = MockRequest(json_string)
         result = handler_sync(mock_request)
-        return jsonify(result)
+        
+        # resultが辞書の場合はそのまま返す、そうでなければJSONとしてパース
+        if isinstance(result, dict):
+            return jsonify(result), result.get('statusCode', 200)
+        else:
+            return result
     except Exception as e:
         print(f"Webhook error: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 @app.route('/health', methods=['GET'])
