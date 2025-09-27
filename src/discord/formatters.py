@@ -87,9 +87,13 @@ class DiscordFormatter:
             if event.speakers:
                 field_value += f"🎤 **登壇者**: {event.speakers}\n"
             
-            # セミナーURL
+            # セミナーURL（YouTube Live）
             if event.seminar_url:
-                field_value += f"🔗 **セミナーURL**: [参加はこちら]({event.seminar_url})"
+                field_value += f"📺 **YouTube Live**: [視聴はこちら]({event.seminar_url})\n"
+            
+            # Peatixページ（イベント申し込み）
+            if event.peatix_url:
+                field_value += f"🎫 **イベント詳細・申込**: [Peatixページ]({event.peatix_url})"
             
             if event.description:
                 # 説明が長い場合は省略
@@ -154,9 +158,13 @@ class DiscordFormatter:
         if event.speakers:
             basic_info += f"\n🎤 **登壇者**: {event.speakers}"
         
-        # セミナーURL
+        # セミナーURL（YouTube Live）
         if event.seminar_url:
-            basic_info += f"\n🔗 **セミナーURL**: [録画・資料はこちら]({event.seminar_url})"
+            basic_info += f"\n📺 **YouTube Live**: [録画・資料はこちら]({event.seminar_url})"
+        
+        # Peatixページ（イベント申し込み）
+        if event.peatix_url:
+            basic_info += f"\n🎫 **イベント詳細**: [Peatixページ]({event.peatix_url})"
         
         # 開催日時フィールド
         embed.add_field(

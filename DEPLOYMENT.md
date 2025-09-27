@@ -1,201 +1,177 @@
-# 🚀 無料サーバーでのLark Webhook自動化デプロイガイド
+# Deployment Guide
 
-## 📋 概要
+このガイドでは、Lark to Discord BotをRailwayにデプロイする方法を説明します。
 
-LarkテーブルのWebhookトリガーを使用して、Discord イベント作成と告知を自動化するシステムです。
+## 前提条件
 
-## 🆓 無料デプロイオプション
+- GitHubアカウント
+- Railwayアカウント（[railway.app](https://railway.app)で作成）
+- 必要なAPI キー（Lark、Discord）
 
-### 1. Railway（推奨）
+## Railway デプロイメント手順
 
-**特徴:**
-- 月500時間無料（約20日間稼働）
-- GitHub連携で自動デプロイ
-- 簡単設定
+### 1. Railwayアカウントの作成とGitHub連携
 
-**デプロイ手順:**
+1. [Railway](https://railway.app)にアクセス
+2. "Start a New Project"をクリック
+3. GitHubアカウントでサインイン
+4. GitHubリポジトリへのアクセスを許可
 
-1. **GitHubリポジトリ作成**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/your-repo.git
-   git push -u origin main
-   ```
+### 2. プロジェクトの作成
 
-2. **Railway設定**
-   - [Railway](https://railway.app)にアクセス
-   - GitHubでサインアップ
-   - "New Project" → "Deploy from GitHub repo"
-   - リポジトリを選択
+1. Railwayダッシュボードで"New Project"をクリック
+2. "Deploy from GitHub repo"を選択
+3. `SkillFreakEventsLark2DiscordBot`リポジトリを選択
+4. "Deploy Now"をクリック
 
-3. **環境変数設定**
-   ```
-   DISCORD_BOT_TOKEN=your_discord_bot_token
-   DISCORD_GUILD_ID=your_guild_id
-   DISCORD_NOTIFICATION_CHANNEL_ID=your_channel_id
-   LARK_APP_ID=your_lark_app_id
-   LARK_APP_SECRET=your_lark_app_secret
-   LARK_TABLE_ID=your_table_id
-   ```
+### 3. 環境変数の設定
 
-4. **デプロイ完了**
-   - 自動的にビルド・デプロイ
-   - Webhook URL: `https://your-app.railway.app/webhook/lark/event`
+Railwayプロジェクトの設定で以下の環境変数を設定してください：
 
-### 2. Render
+#### 必須環境変数
 
-**特徴:**
-- 750時間/月無料
-- 15分間非アクティブでスリープ
+```bash
+# Lark (Feishu) Configuration
+LARK_APP_ID=your_lark_app_id_here
+LARK_APP_SECRET=your_lark_app_secret_here
+LARK_BASE_TOKEN=your_lark_base_token_here
+LARK_TABLE_ID=your_lark_table_id_here
 
-**デプロイ手順:**
-
-1. **Render設定**
-   - [Render](https://render.com)にアクセス
-   - GitHubでサインアップ
-   - "New Web Service"
-   - リポジトリを選択
-
-2. **設定**
-   ```
-   Build Command: pip install -r requirements.txt
-   Start Command: python -m uvicorn src.webhook.app:webhook_app.app --host 0.0.0.0 --port $PORT
-   ```
-
-3. **環境変数設定**（Railway と同じ）
-
-### 3. Vercel（サーバーレス）
-
-**特徴:**
-- 完全無料（制限内）
-- サーバーレス関数
-- 瞬時起動
-
-**設定ファイル作成:**
-```python
-# api/webhook.py
-from src.webhook.app import webhook_app
-
-app = webhook_app.app
+# Discord Configuration
+DISCORD_BOT_TOKEN=your_discord_bot_token_here
+DISCORD_GUILD_ID=your_discord_guild_id_here
+DISCORD_NOTIFICATION_CHANNEL_ID=your_notification_channel_id_here
+DISCORD_ARCHIVE_FORUM_ID=your_archive_forum_id_here
 ```
 
-## 🔧 Lark Webhook設定
+#### オプション環境変数
 
-### 1. Lark開発者コンソール
+```bash
+# Schedule Configuration (Cron format)
+NOTIFICATION_SCHEDULE=0 9 * * *  # 毎日9:00に通知
+ARCHIVE_SCHEDULE=0 22 * * *      # 毎日22:00にアーカイブ
 
-1. **アプリ設定**
-   - [Lark Developer Console](https://open.larksuite.com/app)
-   - アプリを選択
-   - "Event Subscriptions" → "Configure"
+# Logging Configuration
+LOG_LEVEL=INFO
 
-2. **Webhook URL設定**
-   ```
-   https://your-app.railway.app/webhook/lark/event
-   ```
+# Timezone
+TIMEZONE=Asia/Tokyo
 
-3. **イベント購読**
-   ```
-   - application.table.record.created
-   - application.table.record.updated
-   ```
-
-### 2. テーブル設定
-
-1. **Webhook有効化**
-   - Larkテーブルを開く
-   - "自動化" → "Webhook"
-   - URLを設定: `https://your-app.railway.app/webhook/lark/event`
-
-2. **トリガー条件**
-   ```
-   - レコード作成時
-   - レコード更新時（特定フィールド）
-   ```
-
-## 🔄 自動化フロー
-
-```mermaid
-graph LR
-    A[Larkテーブル更新] --> B[Webhook送信]
-    B --> C[サーバー受信]
-    C --> D[イベントデータ取得]
-    D --> E[Discord イベント作成]
-    E --> F[Discord 告知投稿]
-    F --> G[結果保存]
+# API Configuration
+API_TIMEOUT=30
+MAX_RETRIES=3
+RETRY_DELAY=1
 ```
 
-## 📊 監視とログ
+### 4. デプロイメント設定の確認
 
-### Railway
-- ダッシュボードでログ確認
-- メトリクス監視
+プロジェクトには以下のファイルが含まれており、自動的にRailwayで認識されます：
 
-### Render
-- ログストリーム
-- アラート設定
+- `railway.json` - Railway固有の設定
+- `Procfile` - プロセス起動設定
+- `Dockerfile` - コンテナ設定
+- `requirements.txt` - Python依存関係
 
-### ヘルスチェック
-```
-GET https://your-app.railway.app/health
-```
+### 5. デプロイメントの実行
 
-## 🛠️ トラブルシューティング
+1. 環境変数設定後、Railwayが自動的にデプロイを開始
+2. ビルドログを確認してエラーがないことを確認
+3. デプロイ完了後、ヘルスチェックエンドポイント（`/health`）で動作確認
+
+### 6. Webhook URLの設定
+
+1. Railwayでデプロイされたアプリケーションのドメインを確認
+2. Larkアプリケーションの設定で以下のWebhook URLを設定：
+   ```
+   https://your-app-name.railway.app/webhook/lark/event
+   ```
+
+## 自動デプロイメントの設定
+
+Railwayは自動的にGitHubリポジトリと連携し、`main`ブランチへのプッシュ時に自動デプロイを実行します。
+
+### ブランチ保護の設定（推奨）
+
+1. GitHubリポジトリの設定で"Branches"を選択
+2. `main`ブランチの保護ルールを追加
+3. "Require pull request reviews before merging"を有効化
+
+## モニタリングとログ
+
+### ログの確認
+
+Railwayダッシュボードの"Logs"タブでアプリケーションのログを確認できます。
+
+### メトリクス監視
+
+Railwayの"Metrics"タブで以下を監視できます：
+- CPU使用率
+- メモリ使用量
+- ネットワークトラフィック
+- レスポンス時間
+
+## トラブルシューティング
 
 ### よくある問題
 
-1. **Webhook受信できない**
-   - URL確認
-   - SSL証明書確認
-   - ファイアウォール設定
+1. **環境変数が設定されていない**
+   - Railwayの"Variables"タブで全ての必要な環境変数が設定されているか確認
 
-2. **Discord API エラー**
-   - Bot権限確認
-   - レート制限確認
-   - トークン有効性確認
+2. **ビルドエラー**
+   - `requirements.txt`の依存関係を確認
+   - Pythonバージョンの互換性を確認
 
-3. **Lark API エラー**
-   - アプリ権限確認
-   - テーブルアクセス権確認
+3. **起動エラー**
+   - `railway.json`の`startCommand`が正しいか確認
+   - ポート設定（`$PORT`環境変数）が正しいか確認
 
-### ログ確認
-```bash
-# Railway
-railway logs
+4. **Webhook接続エラー**
+   - Railwayアプリケーションのドメインが正しいか確認
+   - Larkアプリケーションの設定でWebhook URLが正しいか確認
 
-# Render
-# ダッシュボードでログ確認
-```
+### ログレベルの調整
 
-## 💡 最適化のヒント
+デバッグが必要な場合は、環境変数`LOG_LEVEL`を`DEBUG`に設定してください。
 
-1. **コスト削減**
-   - 不要なログ削減
-   - 効率的なAPI呼び出し
+## セキュリティ考慮事項
 
-2. **パフォーマンス**
-   - 非同期処理活用
-   - キャッシュ活用
+1. **環境変数の管理**
+   - 機密情報は必ずRailwayの環境変数として設定
+   - `.env`ファイルはリポジトリにコミットしない
 
-3. **信頼性**
-   - エラーハンドリング強化
-   - リトライ機能追加
+2. **アクセス制御**
+   - Railwayプロジェクトへのアクセス権限を適切に管理
+   - 必要に応じてチームメンバーを招待
 
-## 🔐 セキュリティ
+3. **API キーの定期更新**
+   - LarkとDiscordのAPIキーを定期的に更新
+   - 古いキーは無効化
 
-1. **環境変数**
-   - 機密情報は環境変数で管理
-   - .envファイルをgitignoreに追加
+## スケーリング
 
-2. **Webhook検証**
-   - 署名検証実装（推奨）
-   - IP制限（可能であれば）
+Railwayでは使用量に応じて自動的にスケーリングされますが、必要に応じて以下を調整できます：
 
-## 📞 サポート
+- メモリ制限
+- CPU制限
+- インスタンス数
 
-問題が発生した場合:
-1. ログを確認
-2. 環境変数を確認
-3. Webhook URLを確認
-4. Discord/Lark権限を確認
+## バックアップとリストア
+
+1. **設定のバックアップ**
+   - 環境変数の設定をドキュメント化
+   - `railway.json`などの設定ファイルをバージョン管理
+
+2. **データベース（該当する場合）**
+   - Railwayのデータベースサービスを使用している場合は定期バックアップを設定
+
+## サポート
+
+問題が発生した場合は、以下を確認してください：
+
+1. Railwayの[ドキュメント](https://docs.railway.app/)
+2. プロジェクトのGitHubリポジトリのIssues
+3. Railwayのコミュニティフォーラム
+
+---
+
+このガイドに従って、Lark to Discord BotをRailwayに正常にデプロイできるはずです。

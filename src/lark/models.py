@@ -2,7 +2,7 @@
 Lark API データモデル
 """
 
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Union
 from datetime import datetime, date, time
 from pydantic import BaseModel, field_validator
 import pytz
@@ -13,12 +13,13 @@ class LarkEventRecord(BaseModel):
     record_id: str
     event_name: Optional[str] = None
     event_title: Optional[str] = None
-    event_date: Optional[str] = None
-    start_time: Optional[str] = None
-    end_time: Optional[str] = None
+    event_date: Optional[Union[str, int, float]] = None  # UNIXタイムスタンプまたは文字列
+    start_time: Optional[Union[str, int, float]] = None  # UNIXタイムスタンプまたは文字列
+    end_time: Optional[Union[str, int, float]] = None    # UNIXタイムスタンプまたは文字列
     description: Optional[str] = None
     speakers: Optional[str] = None
-    seminar_url: Optional[str] = None
+    seminar_url: Optional[str] = None    # YouTube Liveのリンク
+    peatix_url: Optional[str] = None     # イベント申し込み用ページ
     thumbnail_url: Optional[str] = None
     status: Optional[str] = None
     location: Optional[str] = None
@@ -29,6 +30,15 @@ class LarkEventRecord(BaseModel):
     # 追加フィールド
     event_start_datetime: Optional[datetime] = None
     event_end_datetime: Optional[datetime] = None
+    
+    def model_post_init(self, __context) -> None:
+        """モデル初期化後の処理"""
+        # datetime フィールドを自動設定
+        start_dt, end_dt = self.get_datetime_range()
+        if start_dt:
+            self.event_start_datetime = start_dt
+        if end_dt:
+            self.event_end_datetime = end_dt
     
     @field_validator('thumbnail_url', mode='before')
     @classmethod
@@ -97,7 +107,7 @@ class LarkEventRecord(BaseModel):
         
         return None
 
-    @field_validator('seminar_url', mode='before')
+    @field_validator('seminar_url', 'peatix_url', mode='before')
     @classmethod
     def parse_url_fields(cls, v):
         """URLフィールドをパース（Larkの複雑な形式に対応）"""
@@ -125,6 +135,23 @@ class LarkEventRecord(BaseModel):
         # 文字列の場合（直接URL）
         elif isinstance(v, str):
             return v if v.strip() else None
+        
+        return None
+
+    @field_validator('event_date', 'start_time', 'end_time', mode='before')
+    @classmethod
+    def parse_datetime_fields(cls, v):
+        """日時フィールドをパース"""
+        if v is None:
+            return None
+        
+        # UNIXタイムスタンプ（ミリ秒）の場合はそのまま返す
+        if isinstance(v, (int, float)):
+            return v
+        
+        # 文字列の場合もそのまま返す（従来の形式との互換性）
+        if isinstance(v, str):
+            return v
         
         return None
     
@@ -160,39 +187,40 @@ class LarkEventRecord(BaseModel):
     
     def get_datetime_range(self) -> tuple[Optional[datetime], Optional[datetime]]:
         """イベントの開始・終了日時を取得"""
-        if not self.event_date:
-            return None, None
+        start_dt = None
+        end_dt = None
         
-        try:
-            # 日付をパース
-            event_date_obj = datetime.strptime(self.event_date, "%Y-%m-%d").date()
-            
-            # 開始時間をパース
-            start_dt = None
-            if self.start_time:
-                try:
-                    start_time_obj = datetime.strptime(self.start_time, "%H:%M").time()
-                    start_dt = datetime.combine(event_date_obj, start_time_obj)
-                    # 日本時間として設定
-                    start_dt = pytz.timezone('Asia/Tokyo').localize(start_dt)
-                except ValueError:
-                    pass
-            
-            # 終了時間をパース
-            end_dt = None
-            if self.end_time:
-                try:
+        # 開始日時の処理（UNIXタイムスタンプまたは文字列）
+        if self.event_date:
+            try:
+                if isinstance(self.event_date, (int, float)):
+                    # UNIXタイムスタンプ（ミリ秒）の場合
+                    start_dt = datetime.fromtimestamp(self.event_date / 1000, tz=pytz.timezone('Asia/Tokyo'))
+                elif isinstance(self.event_date, str):
+                    # 文字列の場合（従来の形式との互換性）
+                    if self.start_time:
+                        event_date_obj = datetime.strptime(self.event_date, "%Y-%m-%d").date()
+                        start_time_obj = datetime.strptime(self.start_time, "%H:%M").time()
+                        start_dt = datetime.combine(event_date_obj, start_time_obj)
+                        start_dt = pytz.timezone('Asia/Tokyo').localize(start_dt)
+            except (ValueError, TypeError):
+                pass
+        
+        # 終了日時の処理（UNIXタイムスタンプまたは文字列）
+        if self.end_time:
+            try:
+                if isinstance(self.end_time, (int, float)):
+                    # UNIXタイムスタンプ（ミリ秒）の場合
+                    end_dt = datetime.fromtimestamp(self.end_time / 1000, tz=pytz.timezone('Asia/Tokyo'))
+                elif isinstance(self.end_time, str) and start_dt:
+                    # 文字列の場合（従来の形式との互換性）
                     end_time_obj = datetime.strptime(self.end_time, "%H:%M").time()
-                    end_dt = datetime.combine(event_date_obj, end_time_obj)
-                    # 日本時間として設定
+                    end_dt = datetime.combine(start_dt.date(), end_time_obj)
                     end_dt = pytz.timezone('Asia/Tokyo').localize(end_dt)
-                except ValueError:
-                    pass
-            
-            return start_dt, end_dt
-            
-        except ValueError:
-            return None, None
+            except (ValueError, TypeError):
+                pass
+        
+        return start_dt, end_dt
     
     def get_formatted_date(self) -> str:
         """フォーマットされた日付文字列を取得"""
@@ -291,20 +319,21 @@ class LarkAuthResponse(BaseModel):
 
 # フィールドマッピング設定
 DEFAULT_FIELD_MAPPING = {
-    'event_name': 'イベント名',
-    'event_title': 'タイトル',
-    'event_date': '開催日',
-    'start_time': '開始時間',
-    'end_time': '終了時間',
-    'description': '説明',
-    'speakers': '講師',
-    'seminar_url': 'セミナーURL',
+    'event_name': 'イベント',
+    'event_title': 'イベントタイトル',
+    'event_date': 'イベント開始日時',  # UNIXタイムスタンプ（ミリ秒）
+    'start_time': 'イベント開始日時',  # 同じフィールドを参照（互換性のため）
+    'end_time': 'イベント終了日時',    # UNIXタイムスタンプ（ミリ秒）
+    'description': 'イベント概要',
+    'speakers': '登壇者',
+    'seminar_url': 'セミナーURL',      # YouTube Liveのリンク
+    'peatix_url': '本番Peatixページ',  # イベント申し込み用ページ
     'thumbnail_url': 'サムネイル',
-    'status': 'ステータス',
-    'location': '場所',
-    'participants': '参加者',
-    'created_time': '作成日時',
-    'modified_time': '更新日時'
+    'status': '進捗',
+    'location': '場所',  # 実際のフィールドが存在しない場合はNoneになる
+    'participants': '参加者',  # 実際のフィールドが存在しない場合はNoneになる
+    'created_time': '作成日時',  # 実際のフィールドが存在しない場合はNoneになる
+    'modified_time': '更新日時'  # 実際のフィールドが存在しない場合はNoneになる
 }
 
 
