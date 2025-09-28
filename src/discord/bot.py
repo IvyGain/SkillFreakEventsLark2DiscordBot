@@ -431,7 +431,7 @@ class EventCommands(commands.Cog):
             await ctx.send(embed=error_embed)
     
     @commands.command(name='status')
-    async def bot_status(self, ctx):
+    async def status_command(self, ctx):
         """Bot の状態を表示"""
         try:
             # Lark接続テスト

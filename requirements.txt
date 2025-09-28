@@ -10,6 +10,9 @@ fastapi==0.104.1
 uvicorn==0.24.0
 flask==3.0.0
 
+# Production WSGI Server
+gunicorn==21.2.0
+
 # Task Scheduling
 APScheduler==3.10.4
 

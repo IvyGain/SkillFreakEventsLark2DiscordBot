@@ -39,6 +39,9 @@ class Settings(BaseSettings):
     # ログ設定
     log_level: str = "INFO"
     
+    # タイムゾーン設定
+    timezone: str = "Asia/Tokyo"
+    
     # API設定
     api_timeout: int = 30
     max_retries: int = 3
@@ -67,7 +70,7 @@ class Settings(BaseSettings):
     @field_validator('discord_bot_token')
     @classmethod
     def validate_discord_bot_token(cls, v):
-        if not v or not v.startswith(('Bot ', 'MTk')):
+        if not v or len(v) < 50:
             raise ValueError('Discord Bot Token must be provided and valid')
         return v
     
